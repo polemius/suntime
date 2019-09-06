@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset='utf8'>
+	<meta name='viewport' content='width=device-width'>
+	<meta name="theme-color" content="#000000"/>
+	<meta name="Description" content="Calculation local suntime offset.">
+
+	<title>Svelte app</title>
+
+	<link rel='icon' type='image/png' href='/favicon.png'>
+	<link rel='stylesheet' href='/global.css'>
+	<link rel='stylesheet' href='/bundle.css'>
+	<link rel="manifest" href="manifest.json">
+	<link rel="icon" href="logo512.png" sizes="512x512" />
+    <link rel="icon" href="logo192.png" sizes="192x192" />
+
+	<script defer src='/bundle.js'></script>
+	<script>
+    if('serviceWorker' in navigator) {
+      navigator.serviceWorker
+               .register('/sw.js')
+               .then(function() { console.log("Service Worker Registered"); });
+    }
+    </script>
+</head>
+
+<body>
+<noscript>
+Looks like your browser not support the javascript.
+</noscript>
+</body>
+</html>
