@@ -18,5 +18,7 @@
 
 <div class="title-time">
     <p>{$_(phrase)}</p>
-    <p>{$_.time(time)}</p>
+    {#if time }
+        <p>{$_.time(time)}</p>
+    {/if}
 </div>

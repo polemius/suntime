@@ -1,6 +1,27 @@
 <script>
     import { _ } from 'svelte-i18n'
     import TitleTime from './TitleTime.svelte'
+    import SunCalc from 'suncalc'
+
+    let sunrise,
+        sunset
+
+    function getLocation() {
+      if(navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geo Location not supported by browser");
+      }
+    }
+
+    function showPosition(position) {
+      const { longitude, latitude } = position.coords
+      const times = SunCalc.getTimes(new Date(), latitude, longitude)
+      sunrise = times.sunrise
+      sunset = times.sunset
+    }
+
+    getLocation();
 </script>
 
 <style>
@@ -30,8 +51,8 @@
 
 <div class="app">
       <div class="app__times">
-       <TitleTime phrase={'sunrise'} time={new Date()} />
-       <TitleTime phrase={'sunset'} time={new Date()} />
+       <TitleTime phrase={'sunrise'} time={sunrise} />
+       <TitleTime phrase={'sunset'} time={sunset} />
        <TitleTime phrase={'offset'} time={new Date()} />
       </div>
       <div className="app__day_points">
