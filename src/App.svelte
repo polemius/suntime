@@ -2,9 +2,16 @@
     import { _ } from 'svelte-i18n'
     import TitleTime from './TitleTime.svelte'
     import SunCalc from 'suncalc'
+    import { formatOffset } from "./utils"
+    import calcTimePoints from "./calcTimePoints"
 
     let sunrise,
-        sunset
+        sunset,
+        offset,
+        wakeUp,
+        dinner,
+        supper,
+        goToBed;
 
     function getLocation() {
       if(navigator.geolocation) {
@@ -19,9 +26,14 @@
       const times = SunCalc.getTimes(new Date(), latitude, longitude)
       sunrise = times.sunrise
       sunset = times.sunset
-    }
 
-    getLocation();
+      const timePoints = calcTimePoints(sunrise, sunset)
+      wakeUp = timePoints.wakeUp
+      dinner = timePoints.dinner
+      supper = timePoints.supper
+      goToBed = timePoints.goToBed
+      offset = formatOffset(sunrise, timePoints.offset)
+    }
 </script>
 
 <style>
@@ -47,19 +59,26 @@
   font-size: 38px;
   font-family: 'Arial', serif;
 }
+.app__buttons {
+  display: flex;
+  justify-content: center;
+}
 </style>
 
 <div class="app">
-      <div class="app__times">
-       <TitleTime phrase={'sunrise'} time={sunrise} />
-       <TitleTime phrase={'sunset'} time={sunset} />
-       <TitleTime phrase={'offset'} time={new Date()} />
-      </div>
-      <div className="app__day_points">
-              <TitleTime phrase={'wakeUp'} time={new Date()} />
-              <TitleTime phrase={'dinner'} time={new Date()} />
-              <TitleTime phrase={'supper'} time={new Date()} />
-              <TitleTime phrase={'goToBed'} time={new Date()} />
-            </div>
+    <div class="app__times">
+        <TitleTime phrase={'sunrise'} time={sunrise} />
+        <TitleTime phrase={'sunset'} time={sunset} />
+        <TitleTime phrase={'offset'} time={offset} withFormatting={false} />
+    </div>
+    <div class="app__day_points">
+        <TitleTime phrase={'wakeUp'} time={wakeUp} />
+        <TitleTime phrase={'dinner'} time={dinner} />
+        <TitleTime phrase={'supper'} time={supper} />
+        <TitleTime phrase={'goToBed'} time={goToBed} />
+    </div>
+    <div class="app__buttons">
+        <button on:click={getLocation}>Calculate</button>
+    </div>
 </div>
 

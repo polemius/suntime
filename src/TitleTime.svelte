@@ -13,12 +13,17 @@
 
 <script>
     import { _ } from 'svelte-i18n'
-    export let phrase, time;
+    export let phrase, time, withFormatting = true;
 </script>
 
 <div class="title-time">
     <p>{$_(phrase)}</p>
-    {#if time }
-        <p>{$_.time(time)}</p>
+    {#if time}
+        {#if withFormatting }
+            <p>{$_.time(time)}</p>
+        {:else}
+            <p>{time}</p>
+        {/if}
     {/if}
+
 </div>
