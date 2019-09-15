@@ -1,9 +1,10 @@
 <script>
     import { _ } from 'svelte-i18n'
-    import TitleTime from './TitleTime.svelte'
+    import TitleTime from '../components/TitleTime.svelte'
+    import Header from '../components/Header.svelte'
     import SunCalc from 'suncalc'
-    import { formatOffset } from "./utils"
-    import calcTimePoints from "./calcTimePoints"
+    import { formatOffset } from "../utils"
+    import calcTimePoints from "../calcTimePoints"
 
     let sunrise,
         sunset,
@@ -51,6 +52,7 @@
 }
 </style>
 
+<Header />
 <div class="app__times">
     <TitleTime phrase={'sunrise'} time={sunrise} />
     <TitleTime phrase={'sunset'} time={sunset} />

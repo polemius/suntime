@@ -1,6 +1,7 @@
 <script>
   import { Router, Route } from 'svero';
-  import Home from './Home.svelte';
+  import Home from './pages/Home.svelte';
+  import Settings from './pages/Settings.svelte';
 
   export let url = "";
 </script>
@@ -23,6 +24,7 @@
 
 <div class="app">
     <Router>
-        <Route path="/" component={Home} />
+        <Route exact={true} path="/" component={Home} />
+        <Route exact={true} path="/settings" component={Settings} />
     </Router>
 </div>

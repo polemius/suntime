@@ -2,6 +2,8 @@ import { locale, dictionary, getClientLocale } from 'svelte-i18n'
 
 dictionary.set({
 	ru: {
+		goBack: 'Назад',
+		gear: 'Настройки',
 		sunrise: 'Восход',
 		sunset: 'Закат',
 		offset: 'Смещение',
@@ -11,6 +13,8 @@ dictionary.set({
 		goToBed: 'Отбой',
 	},
 	en: {
+		goBack: 'Go back',
+		gear: 'Settings',
 		sunrise: 'Sunrise',
 		sunset: 'Sunset',
 		offset: 'Offset',
