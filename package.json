@@ -16,7 +16,8 @@
     "date-fns": "^2.1.0",
     "sirv-cli": "^0.4.4",
     "suncalc": "^1.8.0",
-    "svelte-i18n": "^1.1.2-beta"
+    "svelte-i18n": "^1.1.2-beta",
+    "svero": "^1.0.0"
   },
   "scripts": {
     "build": "rollup -c",
