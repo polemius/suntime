@@ -39,16 +39,15 @@
 
 <style>
 .app__times {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
-
 .app__day_points p {
-  font-size: 38px;
-  font-family: 'Arial', serif;
+    font-size: 38px;
 }
 .app__buttons {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
 }
 </style>
 
@@ -65,5 +64,5 @@
     <TitleTime phrase={'goToBed'} time={goToBed} />
 </div>
 <div class="app__buttons">
-    <button on:click={getLocation}>Calculate</button>
+    <button on:click={getLocation}>{$_('calculate')}</button>
 </div>

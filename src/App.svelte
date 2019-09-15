@@ -16,9 +16,10 @@
     --green: #67ef77;
 }
 .app {
-  height: calc(100% - 30px);
-  background: var(--light-gray);
-  padding: 30px 30px 0 30px;
+    height: calc(100% - 30px);
+    background: var(--light-gray);
+    padding: 30px 30px 0 30px;
+    font-family: 'Arial', serif;
 }
 </style>
 
